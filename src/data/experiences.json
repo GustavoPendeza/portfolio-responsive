@@ -1,0 +1,22 @@
+{
+    "experiences": [
+        {
+            "img": "https://user-images.githubusercontent.com/53589614/236569829-001ec4de-6428-46a9-b457-2af0244487d6.png",
+            "company": "BluePaper",
+            "name": "Software Developer",
+            "date": "Fev 2023 - Atualmente"
+        },
+        {
+            "img": "https://user-images.githubusercontent.com/53589614/236573160-dd55aa82-eda8-40bf-8320-a713d92e25a7.png",
+            "company": "Universidade Positivo",
+            "name": "Análise e Desenvolvimento de Sistemas",
+            "date": "2017 - 2019"
+        },
+        {
+            "img": "https://user-images.githubusercontent.com/53589614/236572347-b9d7dff3-54ff-4e46-9d36-29dd620b6a54.png",
+            "company": "SENAI",
+            "name": "Curso de TI",
+            "date": "2015 - 2016"
+        }
+    ]
+}

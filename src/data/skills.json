@@ -1,0 +1,46 @@
+{
+    "frontendSkills": [
+        {
+            "name": "React Native",
+            "percentage": 70
+        },
+        {
+            "name": "Tailwind",
+            "percentage": 60
+        },
+        {
+            "name": "React",
+            "percentage": 50
+        },
+        {
+            "name": "CSS",
+            "percentage": 50
+        },
+        {
+            "name": "Bootstrap",
+            "percentage": 50
+        }
+    ],
+    "backendSkills": [
+        {
+            "name": "NodeJS",
+            "percentage": 60
+        },
+        {
+            "name": "AdonisJS",
+            "percentage": 70
+        },
+        {
+            "name": "MySQL",
+            "percentage": 65
+        },
+        {
+            "name": "PHP",
+            "percentage": 70
+        },
+        {
+            "name": "Python",
+            "percentage": 60
+        }
+    ]
+}

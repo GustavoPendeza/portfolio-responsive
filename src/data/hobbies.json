@@ -1,0 +1,18 @@
+{
+    "hobbies": [
+        {
+            "img": "https://user-images.githubusercontent.com/53589614/236895336-d0d47ace-25eb-4a84-86ea-adac4a872ee3.png",
+            "name": "Games",
+            "title": "",
+            "description": "Os gêneros que mais gosto sâo: RPG, roguelike, metroidvania e jogos de zumbi."
+        },
+        {
+            "img": "https://user-images.githubusercontent.com/53589614/236904728-ddf9b2c8-10d9-4cc8-a7db-16c23f882afa.png",
+            "name": "Música",
+            "title": "Foto tirada por mim no show do PowerWolf.",
+            "description": "Meu gênero favorito é Metal, mas também ouço outros.",
+            "link": "https://open.spotify.com/playlist/1NLkVQXZSH9EQczW1Wywj6?si=ed506fbb22b1406d",
+            "linkText": "Minha playlist do Spotify."
+        }
+    ]
+}
