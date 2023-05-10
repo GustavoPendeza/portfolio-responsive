@@ -4,9 +4,9 @@
   "homepage": "https://GustavoPendeza.github.io/portfolio-responsive",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d .next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
