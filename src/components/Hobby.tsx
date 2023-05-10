@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../app/page.module.css";
+import Image from "next/image";
 
 interface Hobby {
     img: string;
@@ -17,7 +18,7 @@ interface Params {
 export default function Hobby({ hobby }: Params) {
     return (
         <div className={styles.hobbie}>
-            <img src={hobby.img} alt={hobby.name} title={hobby.title} />
+            <Image src={hobby.img} alt={hobby.name} title={hobby.title} />
 
             <div>
                 <h4>{hobby.name}</h4>

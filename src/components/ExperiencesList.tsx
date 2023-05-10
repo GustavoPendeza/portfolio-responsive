@@ -23,7 +23,7 @@ export default function ExperiencesList() {
             <div id={styles.experiencesList}>
                 {
                     data.experiences && data.experiences.map((experience) => {
-                        return <Experience experience={experience} />
+                        return <Experience experience={experience} key={experience.company + experience.date} />
                     })
                 }
             </div>

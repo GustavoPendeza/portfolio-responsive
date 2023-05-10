@@ -25,7 +25,7 @@ export default function HobbiesList() {
             <div id={styles.hobbiesList}>
                 {
                     data.hobbies && data.hobbies.map((hobby) => {
-                        return <Hobby hobby={hobby} />
+                        return <Hobby hobby={hobby} key={hobby.name} />
                     })
                 }
             </div>

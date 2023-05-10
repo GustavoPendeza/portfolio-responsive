@@ -21,7 +21,7 @@ export default function Frontend() {
             <div className={styles.skillsList}>
                 {
                     data.frontendSkills && data.frontendSkills.map((skill) => {
-                        return <Skills skill={skill} />
+                        return <Skills skill={skill} key={skill.name} />
                     })
                 }
             </div>
