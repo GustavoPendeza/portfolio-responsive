@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
-  "homepage": "https://gustavopendeza.github.io/portfolio-responsive/",
+  "homepage": "https://gustavopendeza.github.io/portfolio-responsive",
   "private": true,
   "scripts": {
     "predeploy": "npm run build",
