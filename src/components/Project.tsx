@@ -36,7 +36,7 @@ export default function Project({ project }: Params) {
             <div id={styles.tagList}>
                 {apiResponse?.names && apiResponse?.names.length !== 0
                     ? apiResponse.names.map((tag) => {
-                          return <span className={styles.tag}>#{tag}</span>;
+                          return <span className={styles.tag} key={tag}>#{tag}</span>;
                       })
                     : <span className={styles.tag}>Esse projeto não possui tags</span>}
             </div>
