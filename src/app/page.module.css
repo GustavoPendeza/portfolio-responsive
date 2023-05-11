@@ -145,6 +145,44 @@
     margin: 5px;
 }
 
+#tagList {
+    display: flex;
+    gap: 1rem;
+}
+
+.tag {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.projectName {
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+}
+
+.description {
+    font-size: 16px;
+    font-weight: 500;
+    color: #a7a6a6;
+    margin-bottom: 3rem;
+}
+
+.codeButton {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #bf83ff;
+    color: #bf83ff;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.codeButton:hover {
+    opacity: 0.7;
+}
+
 /* ---------- EXPERIENCES ---------- */
 
 #experiences h2 {

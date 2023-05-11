@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../app/page.module.css";
-import Image from "next/image";
 
 interface Experience {
     img: string;
@@ -16,7 +15,7 @@ interface Params {
 export default function Experience({experience}: Params) {
     return (
         <div className={styles.experience}>
-            <Image
+            <img
                 src={experience.img}
                 alt={experience.company}
             />
