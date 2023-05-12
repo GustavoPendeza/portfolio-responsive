@@ -9,22 +9,41 @@ interface Project {
     name: string;
     description: string;
     html_url: string;
+    topics: string[];
+    homepage: string;
 }
 
 export default function ProjectsList() {
     const [apiResponse, setApiResponse] = useState<Project[] | null>(null);
+    const [loading, setLoading] = useState(false);
 
     async function getProjects() {
-        const response = await api.get(
-            `users/GustavoPendeza/repos?sort=pushed&per_page=5&page=1`
-        );
+        try {
+            setLoading(true);
+            const response = await api.get(
+                `users/GustavoPendeza/repos?sort=pushed&per_page=10&page=1`
+            );
+            console.log(response.data);
 
-        setApiResponse(response.data);
+            setApiResponse(response.data);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false);
+        }
     }
 
     useEffect(() => {
         getProjects();
     }, []);
+
+    if (loading) {
+        return (
+            <div className={styles.loadingContainer} id={styles.projectsList}>
+                <div className={styles.loading}></div>
+            </div>
+        );
+    }
 
     return (
         <div id={styles.projectsList}>
@@ -32,15 +51,11 @@ export default function ProjectsList() {
                 <h3 id={styles.projectsTitle}>Projetos</h3>
             </section>
 
-            {apiResponse ? (
-                apiResponse.map((project) => {
-                    return <Project project={project} key={project.name} />;
-                })
-            ) : (
-                <>
-                    <p>nao deu</p> {/* MUDAR */}
-                </>
-            )}
+            {apiResponse
+                ? apiResponse.map((project) => {
+                      return <Project project={project} key={project.name} />;
+                  })
+                : null}
         </div>
     );
 }

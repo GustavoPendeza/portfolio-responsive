@@ -24,7 +24,8 @@
         "profile frontend backend"
         "profile projects projects"
         "experiences projects projects"
-        "hobbies projects projects";
+        "hobbies projects projects"
+        "none projects projects";
     gap: 1rem;
 }
 
@@ -145,9 +146,16 @@
     margin: 5px;
 }
 
+#warning {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
 #tagList {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
 }
 
 .tag {
@@ -166,6 +174,27 @@
     font-weight: 500;
     color: #a7a6a6;
     margin-bottom: 3rem;
+}
+
+.demoCode {
+    display: flex;
+    gap: 1rem;
+}
+
+.demoButton {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+    background: #bf83ff;
+    border: 2px solid #bf83ff;
+    color: #eeeeee;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.demoButton:hover {
+    opacity: 0.7;
 }
 
 .codeButton {
@@ -271,6 +300,33 @@
     color: #eeeeee;
 }
 
+/* ---------- LOADING ---------- */
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    
+    width: 100%;
+}
+
+.loading {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #bf83ff;
+    border-top: 5px solid #272727;
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+}
+
 /* ---------- FOOTER ---------- */
 
 #createdBy {
@@ -286,4 +342,50 @@
     font-weight: 700;
     text-decoration: underline;
     color: #828282;
+}
+
+
+@media screen and (max-width: 1128px) {
+    /* ---------- PROFILE ---------- */
+    
+    #contacts a {
+        font-size: 14px;
+    }
+
+    /* ---------- SKILLS ---------- */
+    
+    .skillsTitle {
+        font-size: 16px;
+    }
+    
+    .skillsList span {
+        font-size: 14px;
+    }
+
+    /* ---------- EXPERIENCE ---------- */
+
+    .experience img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .experienceText span {
+        font-size: 12px;
+    }
+    
+    .experienceText h4 {
+        font-size: 14px;
+    }
+    
+    .experienceText h5 {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 685px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
