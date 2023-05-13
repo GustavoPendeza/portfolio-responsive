@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../app/page.module.css";
 import Project from "./Project";
 import { api } from "@/lib/axios";
+import ProjectFilter from "./ProjectFilter";
 
 interface Project {
     name: string;
@@ -16,6 +17,7 @@ interface Project {
 export default function ProjectsList() {
     const [apiResponse, setApiResponse] = useState<Project[] | null>(null);
     const [loading, setLoading] = useState(false);
+    const [numberOfProjects, setNumberOfProjects] = useState(0);
 
     async function getProjects() {
         try {
@@ -23,7 +25,6 @@ export default function ProjectsList() {
             const response = await api.get(
                 `users/GustavoPendeza/repos?sort=pushed&per_page=10&page=1`
             );
-            console.log(response.data);
 
             setApiResponse(response.data);
         } catch (error) {
@@ -47,9 +48,7 @@ export default function ProjectsList() {
 
     return (
         <div id={styles.projectsList}>
-            <section className={styles.section}>
-                <h3 id={styles.projectsTitle}>Projetos</h3>
-            </section>
+            <ProjectFilter setNumberOfProjects={setNumberOfProjects} />
 
             {apiResponse
                 ? apiResponse.map((project) => {

@@ -8,14 +8,14 @@ interface Project {
     homepage: string;
 }
 
-interface Params {
+interface Props {
     project: Project;
 }
 
-export default function Project({ project }: Params) {
+export default function Project({ project }: Props) {
     return (
         <section className={styles.section}>
-            <div id={styles.tagList}>
+            <div className={styles.tagList}>
                 {project.topics && project.topics.length !== 0 ? (
                     project.topics.map((tag) => {
                         return (

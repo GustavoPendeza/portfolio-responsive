@@ -8,11 +8,11 @@ interface Experience {
     date: string;
 }
 
-interface Params {
+interface Props {
     experience: Experience;
 }
 
-export default function Experience({experience}: Params) {
+export default function Experience({experience}: Props) {
     return (
         <div className={styles.experience}>
             <img

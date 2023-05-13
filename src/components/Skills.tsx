@@ -6,11 +6,11 @@ interface Skill {
     percentage: number;
 }
 
-interface Params {
+interface Props {
     skill: Skill;
 }
 
-export default function Skills({ skill }: Params) {
+export default function Skills({ skill }: Props) {
     const progress = {
         width: `${skill.percentage}%`,
     };

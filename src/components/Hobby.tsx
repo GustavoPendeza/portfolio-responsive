@@ -10,11 +10,11 @@ interface Hobby {
     linkText: string;
 }
 
-interface Params {
+interface Props {
     hobby: Hobby;
 }
 
-export default function Hobby({ hobby }: Params) {
+export default function Hobby({ hobby }: Props) {
     return (
         <div className={styles.hobbie}>
             <img src={hobby.img} alt={hobby.name} title={hobby.title} />
