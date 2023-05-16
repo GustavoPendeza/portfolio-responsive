@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-    title: "Portfolio",
+    title: "Gustavo Pendeza Portfolio",
 };
 
 export default function RootLayout({

@@ -182,15 +182,35 @@
     color: #ffffff;
 }
 
+#filterList {
+    padding: 1rem;
+}
+
 .tagList {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem 1rem;
+    max-height: 350px;
+    overflow: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
-#filterList {
-    padding: 1rem;
-    transition: 0.6s;
+.tagList::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+.activeTopic {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #bf83ff;
+    background: #bf83ff;
+    color: #ffffff;
+    border-radius: 12px;
+    transition: 0.2s;
+    cursor: pointer;
 }
 
 .buttonTopic {
@@ -209,6 +229,38 @@
 .buttonTopic:hover {
     background: #bf83ff;
     color: #ffffff;
+}
+
+.removeFilterDiv {
+    display: flex;
+    justify-content: right;
+}
+
+.removeFilterButton {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem;
+    background: #f02929;
+    gap: 0.5rem;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.removeFilterButton span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #eeeeee;
+}
+
+.removeFilterButton:hover {
+    opacity: 0.8;
+}
+
+#x {
+    width: 22px;
+    height: 22px;
 }
 
 .tag {
@@ -366,17 +418,15 @@
 }
 
 .loadingContainer {
-    display: flex;
-    justify-content: center;
-    
+    align-items: center;
     width: 100%;
 }
 
 .loading {
     width: 50px;
     height: 50px;
-    border: 5px solid #bf83ff;
-    border-top: 5px solid #272727;
+    border: 5px solid #272727;
+    border-top: 5px solid #bf83ff;
     border-radius: 50%;
     animation: spinner 1.5s linear infinite;
 }
@@ -398,20 +448,19 @@
     color: #828282;
 }
 
-
 @media screen and (max-width: 1128px) {
     /* ---------- PROFILE ---------- */
-    
+
     #contacts a {
         font-size: 14px;
     }
 
     /* ---------- SKILLS ---------- */
-    
+
     .skillsTitle {
         font-size: 16px;
     }
-    
+
     .skillsList span {
         font-size: 14px;
     }
@@ -422,15 +471,15 @@
         width: 70px;
         height: 70px;
     }
-    
+
     .experienceText span {
         font-size: 12px;
     }
-    
+
     .experienceText h4 {
         font-size: 14px;
     }
-    
+
     .experienceText h5 {
         font-size: 12px;
     }

@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
 import styles from "../app/page.module.css";
 import Project from "./Project";
@@ -14,21 +12,42 @@ interface Project {
     homepage: string;
 }
 
-export default function ProjectsList() {
-    const [apiResponse, setApiResponse] = useState<Project[] | null>(null);
+interface Data {
+    total_count: number;
+    items: Project[];
+}
+
+interface Props {
+    setTotal_count: (arg: number | undefined) => void;
+    activeTopic: string | null;
+    page: number;
+}
+
+export default function ProjectsList({ setTotal_count, activeTopic, page }: Props) {
+    const [apiResponse, setApiResponse] = useState<Data | null>(null);
     const [loading, setLoading] = useState(false);
-    const [numberOfProjects, setNumberOfProjects] = useState(0);
 
     async function getProjects() {
         try {
             setLoading(true);
-            const response = await api.get(
-                `users/GustavoPendeza/repos?sort=pushed&per_page=10&page=1`
-            );
+            if (activeTopic) {
+                const response = await api.get(
+                    `/search/repositories?sort=updated&per_page=10&page=${page}&q=user:gustavopendeza+topic:${activeTopic}`
+                );
 
-            setApiResponse(response.data);
+                setApiResponse(response.data);
+            } else {
+                const response = await api.get(
+                    `/search/repositories?sort=updated&per_page=10&page=${page}&q=user:gustavopendeza`
+                );
+
+                setApiResponse(response.data);
+            }
         } catch (error) {
             console.log(error);
+            alert(
+                "Houve um erro. \n\nVocê pode ter excedido o limite de requisições. Tente novamente em alguns instantes."
+            );
         } finally {
             setLoading(false);
         }
@@ -36,7 +55,11 @@ export default function ProjectsList() {
 
     useEffect(() => {
         getProjects();
-    }, []);
+    }, [activeTopic, page]);
+
+    useEffect(() => {
+        setTotal_count(apiResponse?.total_count);
+    }, [apiResponse]);
 
     if (loading) {
         return (
@@ -47,14 +70,12 @@ export default function ProjectsList() {
     }
 
     return (
-        <div id={styles.projectsList}>
-            <ProjectFilter setNumberOfProjects={setNumberOfProjects} />
-
-            {apiResponse
-                ? apiResponse.map((project) => {
+        <>
+            {apiResponse?.items
+                ? apiResponse.items.map((project) => {
                       return <Project project={project} key={project.name} />;
                   })
                 : null}
-        </div>
+        </>
     );
 }

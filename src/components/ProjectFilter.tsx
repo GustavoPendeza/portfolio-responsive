@@ -7,22 +7,27 @@ interface Project {
 }
 
 interface Props {
-    setNumberOfProjects: (arg: number) => void;
+    total_count: number | undefined;
+    activeTopic: string | null;
+    setActiveTopic: (arg: string | null) => void;
 }
 
-export default function ProjectFilter({ setNumberOfProjects }: Props) {
+export default function ProjectFilter({
+    total_count,
+    activeTopic,
+    setActiveTopic,
+}: Props) {
     const [apiResponse, setApiResponse] = useState<Project[] | null>(null);
     const [tags, setTags] = useState<Array<string> | null>(null);
     const uniqueTopics: Array<string> = [];
-    const [showTopics, setShowTopics] = useState(false);
+    const [topicsVisibility, setTopicsVisibility] = useState(false);
 
     async function getProjects() {
         const response = await api.get(
-            `users/GustavoPendeza/repos?sort=pushed&per_page=100&page=1`
+            `users/GustavoPendeza/repos?sort=pushed&per_page=100`
         );
 
         setApiResponse(response.data);
-        setNumberOfProjects(response.data.length);
     }
 
     function getTopics() {
@@ -42,8 +47,16 @@ export default function ProjectFilter({ setNumberOfProjects }: Props) {
         setTags(uniqueTopics);
     }
 
-    function onClick() {
-        showTopics ? setShowTopics(false) : setShowTopics(true);
+    function showTopics() {
+        topicsVisibility
+            ? setTopicsVisibility(false)
+            : setTopicsVisibility(true);
+    }
+
+    function filter(selectedTopic: string) {
+        activeTopic !== selectedTopic
+            ? setActiveTopic(selectedTopic)
+            : setActiveTopic(null);
     }
 
     useEffect(() => {
@@ -55,36 +68,58 @@ export default function ProjectFilter({ setNumberOfProjects }: Props) {
     }, [apiResponse]);
 
     return (
-        <section className={styles.section} id={styles.filterSection}>
-            <button id={styles.filterButton} onClick={onClick}>
-                <div>
-                    <h3 id={styles.projectsTitle}>
-                        Projetos ({apiResponse?.length})
-                    </h3>
+        <>
+            <section className={styles.section} id={styles.filterSection}>
+                <button id={styles.filterButton} onClick={showTopics}>
+                    <div>
+                        <h3 id={styles.projectsTitle}>
+                            Projetos ({total_count})
+                        </h3>
 
-                    <img id={styles.imgFilter} src="filter.svg" alt="Filter" />
-                </div>
-            </button>
-
-            {showTopics ? (
-                <div id={styles.filterList}>
-                    <div className={styles.tagList}>
-                        {apiResponse && tags
-                            ? tags.map((topic) => {
-                                  return (
-                                      <button
-                                          className={styles.buttonTopic}
-                                          onClick={() => {}}
-                                          key={topic}
-                                      >
-                                          #{topic}
-                                      </button>
-                                  );
-                              })
-                            : null}
+                        <img
+                            id={styles.imgFilter}
+                            src="filter.svg"
+                            alt="Filter"
+                        />
                     </div>
+                </button>
+
+                {topicsVisibility ? (
+                    <div id={styles.filterList}>
+                        <div className={styles.tagList}>
+                            {apiResponse && tags
+                                ? tags.map((topic) => {
+                                      return (
+                                          <button
+                                              className={
+                                                  activeTopic === topic
+                                                      ? styles.activeTopic
+                                                      : styles.buttonTopic
+                                              }
+                                              onClick={() => filter(topic)}
+                                              key={topic}
+                                          >
+                                              #{topic}
+                                          </button>
+                                      );
+                                  })
+                                : null}
+                        </div>
+                    </div>
+                ) : null}
+            </section>
+
+            {activeTopic ? (
+                <div className={styles.removeFilterDiv}>
+                    <button
+                        className={styles.removeFilterButton}
+                        onClick={() => filter(activeTopic)}
+                    >
+                        <span>#{activeTopic}</span>
+                        <img id={styles.x} src="x.svg" />
+                    </button>
                 </div>
             ) : null}
-        </section>
+        </>
     );
 }
