@@ -17,6 +17,27 @@ h2 {
     font-size: 24px;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #272727;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #bf83ff;
+    border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ae63ff;
+}
+
 @media screen and (max-width: 1128px) {
     h2 {
         font-size: 20px;

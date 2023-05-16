@@ -9,6 +9,7 @@ import ProjectsList from "@/components/ProjectsList";
 import Profile from "@/components/Profile";
 import { useState } from "react";
 import ProjectFilter from "@/components/ProjectFilter";
+import Pagination from "@/components/Pagination";
 
 export default function Home() {
     const [total_count, setTotal_count] = useState<number | undefined>(
@@ -16,6 +17,7 @@ export default function Home() {
     );
     const [activeTopic, setActiveTopic] = useState<string | null>(null);
     const [page, setPage] = useState(1);
+    const projectsPerPage = 10;
 
     return (
         <>
@@ -31,12 +33,20 @@ export default function Home() {
                         total_count={total_count}
                         activeTopic={activeTopic}
                         setActiveTopic={setActiveTopic}
+                        setPage={setPage}
                     />
 
                     <ProjectsList
                         setTotal_count={setTotal_count}
                         activeTopic={activeTopic}
                         page={page}
+                        projectsPerPage={projectsPerPage}
+                    />
+
+                    <Pagination
+                        total_count={total_count}
+                        setPage={setPage}
+                        projectsPerPage={projectsPerPage}
                     />
                 </div>
 

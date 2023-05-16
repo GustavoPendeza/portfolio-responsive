@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../app/page.module.css";
 import Project from "./Project";
 import { api } from "@/lib/axios";
-import ProjectFilter from "./ProjectFilter";
 
 interface Project {
     name: string;
@@ -21,9 +20,15 @@ interface Props {
     setTotal_count: (arg: number | undefined) => void;
     activeTopic: string | null;
     page: number;
+    projectsPerPage: number;
 }
 
-export default function ProjectsList({ setTotal_count, activeTopic, page }: Props) {
+export default function ProjectsList({
+    setTotal_count,
+    activeTopic,
+    page,
+    projectsPerPage,
+}: Props) {
     const [apiResponse, setApiResponse] = useState<Data | null>(null);
     const [loading, setLoading] = useState(false);
 
@@ -32,13 +37,13 @@ export default function ProjectsList({ setTotal_count, activeTopic, page }: Prop
             setLoading(true);
             if (activeTopic) {
                 const response = await api.get(
-                    `/search/repositories?sort=updated&per_page=10&page=${page}&q=user:gustavopendeza+topic:${activeTopic}`
+                    `/search/repositories?sort=updated&per_page=${projectsPerPage}&page=${page}&q=user:gustavopendeza+topic:${activeTopic}`
                 );
 
                 setApiResponse(response.data);
             } else {
                 const response = await api.get(
-                    `/search/repositories?sort=updated&per_page=10&page=${page}&q=user:gustavopendeza`
+                    `/search/repositories?sort=updated&per_page=${projectsPerPage}&page=${page}&q=user:gustavopendeza`
                 );
 
                 setApiResponse(response.data);

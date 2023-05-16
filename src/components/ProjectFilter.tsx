@@ -10,12 +10,14 @@ interface Props {
     total_count: number | undefined;
     activeTopic: string | null;
     setActiveTopic: (arg: string | null) => void;
+    setPage: (arg: number) => void;
 }
 
 export default function ProjectFilter({
     total_count,
     activeTopic,
     setActiveTopic,
+    setPage,
 }: Props) {
     const [apiResponse, setApiResponse] = useState<Project[] | null>(null);
     const [tags, setTags] = useState<Array<string> | null>(null);
@@ -57,6 +59,8 @@ export default function ProjectFilter({
         activeTopic !== selectedTopic
             ? setActiveTopic(selectedTopic)
             : setActiveTopic(null);
+
+        setPage(1);
     }
 
     useEffect(() => {

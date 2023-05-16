@@ -78,6 +78,7 @@
     color: #eeeeee;
     font-size: 16px;
     font-weight: 500;
+    word-break: break-all;
 }
 
 #profile p {
@@ -316,6 +317,49 @@
 .codeButton:hover {
     background: #bf83ff;
     color: #ffffff;
+}
+
+/* ---------- PAGINATION ---------- */
+
+.paginationButtons {
+    width: 85%;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem 0;
+}
+
+.paginationButtons a {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
+    margin: 8px;
+    border-radius: 6px;
+    color: #bf83ff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.paginationButtons a:hover {
+    background: #bf83ff;
+    color: #eeeeee;
+}
+
+.activePaginationButton a {
+    background: #bf83ff;
+    color: #eeeeee;
+    cursor: default;
+}
+
+.disabledPaginationButton a {
+    color: #a7a6a6;
+}
+
+.disabledPaginationButton a:hover {
+    background: transparent;
+    color: #a7a6a6;
+    cursor: not-allowed;
 }
 
 /* ---------- EXPERIENCES ---------- */
